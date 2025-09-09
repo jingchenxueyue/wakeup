@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CreateBuff" load_steps=5 format=3 uid="uid://b3vu5bhfo3dvx"]
+
+[ext_resource type="Script" uid="uid://bmbp83h0ssruf" path="res://resource/buff/script/buff_base.gd" id="1_frpbn"]
+[ext_resource type="Script" uid="uid://grkm8knbpxr" path="res://resource/buff/script/b_draw_card.gd" id="2_8imxm"]
+[ext_resource type="Script" uid="uid://dc0y5ltffln5o" path="res://resource/effect/script/create_buff.gd" id="3_5gwxr"]
+
+[sub_resource type="Resource" id="Resource_rsery"]
+script = ExtResource("2_8imxm")
+count = 2
+execute_state = 2
+invalid_state = 0
+is_forever = false
+life = 1
+metadata/_custom_type_script = "uid://grkm8knbpxr"
+
+[resource]
+script = ExtResource("3_5gwxr")
+buff_list = Array[ExtResource("1_frpbn")]([SubResource("Resource_rsery")])
+is_execute_now = false
+product_name = ""
+effect_text = "抽两张卡"
+metadata/_custom_type_script = "uid://dc0y5ltffln5o"

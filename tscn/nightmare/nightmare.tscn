@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cybonpw1jpqy4"]
+
+[ext_resource type="Script" uid="uid://d4cugsn2i3uon" path="res://tscn/nightmare/nightmare.gd" id="1_jpj6c"]
+
+[node name="Nightmare" type="Node2D"]
+script = ExtResource("1_jpj6c")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

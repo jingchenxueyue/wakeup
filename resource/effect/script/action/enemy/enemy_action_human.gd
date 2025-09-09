@@ -1,0 +1,2 @@
+extends EnemyAction
+class_name EnemyActionHuman

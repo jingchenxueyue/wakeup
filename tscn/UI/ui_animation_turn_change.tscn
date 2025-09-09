@@ -1,0 +1,212 @@
+[gd_scene load_steps=5 format=3 uid="uid://df6cgfm0puidl"]
+
+[ext_resource type="StyleBox" uid="uid://vrbsnwnbds8r" path="res://asset/UI/resource/default_panel.tres" id="1_i2dpv"]
+[ext_resource type="FontFile" uid="uid://bylnfibh200eu" path="res://asset/UI/font/ark-pixel-12px-proportional-zh_cn.otf" id="2_iq2jw"]
+
+[sub_resource type="GDScript" id="GDScript_qw3gp"]
+script/source = "extends Control
+
+@warning_ignore(\"unused_signal\")
+signal show_over
+
+@onready var panel_shadow: Panel = $PanelShadow
+@onready var panel_main: Panel = $PanelMain
+@onready var panel_turn_count: Panel = $PanelTurnCount
+@onready var label_turn_count: Label = $LabelTurnCount
+@onready var label_turn_text: Label = $LabelTurnText
+
+var reveal_duration : float = 0.4
+var hold_duration : float = 0.8
+var hide_duration : float = 0.4
+
+var is_show : bool = false
+var turn_state_text : String = \"\"
+var time : float = 0.0
+
+var label_tween : Tween
+
+var text_list : Array[String] = [
+	\"状态错误\",
+	\"回合开始\",
+	\"规划支援\",
+	\"友方行动\",
+	\"噩梦蔓延\",
+	\"敌方行动\",
+	\"回合结束\",
+]
+
+var label_list : Array
+var panel_list : Array
+var sub_panel_list : Array
+
+func _ready() -> void:
+	label_list = [label_turn_count, label_turn_text]
+	panel_list = [panel_main, panel_shadow]
+	sub_panel_list = [panel_turn_count]
+
+func show_self(turn_count : int, turn_state : int, final_call : Callable = Callable()) -> void:
+	if visible:
+		return
+	visible = true
+	
+	if turn_count >= 0 && turn_count < 10:
+		label_turn_count.text = \"0\"
+	else:
+		label_turn_count.text = \"\"
+	label_turn_count.text = label_turn_count.text + str(turn_count)
+	label_turn_text.text = text_list[turn_state]
+	
+	var tmp_tween : Tween = create_tween()
+	
+	tmp_tween.set_parallel(true)
+	var tmp_list : Array = panel_list
+	tmp_list.append_array(sub_panel_list)
+	var tmp_color : Color = Color.WHITE
+	match turn_state:
+		WorldState.TurnState.PLAYER:
+			tmp_color = Color.RED
+		WorldState.TurnState.FRIEND:
+			tmp_color = Color.RED
+		WorldState.TurnState.NIGHTMARE:
+			tmp_color = Color.DARK_VIOLET
+		WorldState.TurnState.ENEMY:
+			tmp_color = Color.BLUE
+	for element in tmp_list:
+		tmp_tween.tween_property(element, \"scale\", Vector2.ONE, reveal_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		tmp_tween.tween_property(element, \"modulate\", tmp_color, 0)
+	
+	tmp_tween.set_parallel(false)
+	tmp_tween.tween_interval(hold_duration)
+	tmp_tween.set_parallel(true)
+	for label in label_list:
+		tmp_tween.tween_property(label, \"visible\", true, 0)
+	tmp_tween.tween_callback(twinkle.bind(null, label_list))
+	tmp_tween.set_parallel(false)
+	for label in label_list:
+		tmp_tween.tween_property(label, \"visible\", false, 0)
+	tmp_tween.set_parallel(false)
+	tmp_tween.tween_interval(0)
+	tmp_tween.set_parallel(true)
+	
+	for element in panel_list:
+		tmp_tween.tween_property(element, \"scale\", Vector2.DOWN, hide_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	for element in sub_panel_list:
+		tmp_tween.tween_property(element, \"scale\", Vector2.DOWN, hide_duration / 2.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	
+	tmp_tween.set_parallel(false)
+	tmp_tween.tween_property(self, \"visible\", false, 0)
+	tmp_tween.tween_callback(emit_signal.bind(\"show_over\"))
+	if final_call.is_valid():
+		tmp_tween.tween_callback(final_call)
+
+func twinkle(_tween : Tween, control_list : Array, count : int = 2) -> Tween:
+	var twn : Tween
+	if !is_instance_valid(_tween):
+		twn = create_tween()
+	else:
+		twn = _tween
+	
+	for _count in count:
+		twn.tween_interval(0)
+		twn.set_parallel(true)
+		for element in control_list:
+			twn.tween_property(element, \"visible\", true, 0.03)
+		twn.set_parallel(false)
+		for element in control_list:
+			twn.tween_property(element, \"visible\", false, 0.03)
+	
+	twn.tween_interval(0)
+	twn.set_parallel(true)
+	for element in control_list:
+		twn.tween_property(element, \"visible\", true, 0.02)
+	
+	return twn
+
+func label_twinkle() -> void:
+	if !is_instance_valid(label_tween):
+		label_tween = create_tween()
+	for label in label_list:
+		label_tween.tween_property(label, \"visible\", true, 0)
+	label_tween.tween_callback(twinkle.bind(label_tween, label_list))
+	label_tween.set_parallel(false)
+	for label in label_list:
+		label_tween.tween_property(label, \"visible\", false, 0)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq2jw"]
+bg_color = Color(0.66, 0.66, 0.66, 1)
+
+[node name="UIAnimationTurnChange" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_qw3gp")
+metadata/_edit_lock_ = true
+
+[node name="PanelShadow" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -107.0
+offset_right = 196.0
+offset_bottom = -59.0
+grow_vertical = 2
+scale = Vector2(1e-05, 1)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("1_i2dpv")
+
+[node name="PanelMain" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -101.0
+offset_right = 202.0
+offset_bottom = -53.0
+grow_vertical = 2
+scale = Vector2(1e-05, 1)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_iq2jw")
+
+[node name="PanelTurnCount" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 176.0
+offset_right = 45.0
+offset_bottom = 208.0
+scale = Vector2(1e-05, 1)
+theme_override_styles/panel = ExtResource("1_i2dpv")
+
+[node name="LabelTurnCount" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 13.0
+offset_top = 176.0
+offset_right = 45.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("2_iq2jw")
+theme_override_font_sizes/font_size = 24
+text = "01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTurnText" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 48.0
+offset_top = 176.0
+offset_right = 188.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("2_iq2jw")
+theme_override_font_sizes/font_size = 24
+text = "回合开始"
+vertical_alignment = 1

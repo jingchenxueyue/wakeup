@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://vcgbmejjvpmq"]
+
+[ext_resource type="Theme" uid="uid://cxebgykxavgyt" path="res://asset/UI/resource/default.theme" id="1_865it"]
+[ext_resource type="Script" uid="uid://c7qx1tpard2di" path="res://tscn/UI/ui_message.gd" id="1_ikmwn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vihc2"]
+bg_color = Color(0.00434, 0.0026, 0.02, 0.2)
+corner_radius_bottom_right = 35
+corner_detail = 1
+anti_aliasing = false
+
+[node name="UIMessage" type="Panel"]
+custom_minimum_size = Vector2(256, 32)
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vihc2")
+script = ExtResource("1_ikmwn")
+
+[node name="LabelMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_865it")
+text = "这是一条提示消息"
+vertical_alignment = 1

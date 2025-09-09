@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyAIHuman" load_steps=2 format=3 uid="uid://cidar7g0lxium"]
+
+[ext_resource type="Script" uid="uid://clvb54rv0mlxi" path="res://resource/effect/script/action/enemy/enemy_action_human.gd" id="1_0vaeg"]
+
+[resource]
+script = ExtResource("1_0vaeg")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://clvb54rv0mlxi"

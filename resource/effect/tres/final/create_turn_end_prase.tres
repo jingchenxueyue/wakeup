@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CreateBuff" load_steps=7 format=3 uid="uid://cj4ua3yqajlvw"]
+
+[ext_resource type="Script" uid="uid://bmbp83h0ssruf" path="res://resource/buff/script/buff_base.gd" id="1_4cbm8"]
+[ext_resource type="Script" uid="uid://dc0y5ltffln5o" path="res://resource/effect/script/create_buff.gd" id="2_0jvg1"]
+[ext_resource type="Script" uid="uid://d4geamlb0he7x" path="res://resource/effect/script/parse.gd" id="2_ifepd"]
+[ext_resource type="Script" uid="uid://d0yu1are4v1an" path="res://resource/buff/script/b_execute_effect.gd" id="3_m8nsx"]
+
+[sub_resource type="Resource" id="Resource_cfh5j"]
+script = ExtResource("2_ifepd")
+value = 25.0
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://d4geamlb0he7x"
+
+[sub_resource type="Resource" id="Resource_xu7y3"]
+script = ExtResource("3_m8nsx")
+effect = SubResource("Resource_cfh5j")
+execute_state = 6
+invalid_state = 6
+is_forever = true
+life = 1
+metadata/_custom_type_script = "uid://d0yu1are4v1an"
+
+[resource]
+script = ExtResource("2_0jvg1")
+buff_list = Array[ExtResource("1_4cbm8")]([SubResource("Resource_xu7y3")])
+is_execute_now = false
+product_name = "解析探针"
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dc0y5ltffln5o"

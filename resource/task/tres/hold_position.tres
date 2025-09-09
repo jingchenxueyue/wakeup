@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HoldPosition" load_steps=2 format=3 uid="uid://dcaenmuis5ubi"]
+
+[ext_resource type="Script" uid="uid://ndiiper5wrld" path="res://resource/task/script/hold_position.gd" id="1_udq3k"]
+
+[resource]
+script = ExtResource("1_udq3k")
+hold_turn_count_max = 2
+can_pause = false
+is_enemy = false
+target_tag = "HUMAN"
+target_map_position_list = Array[Vector2i]([])
+task_context = "己方单位坚守目标位置2个回合"
+metadata/_custom_type_script = "uid://ndiiper5wrld"

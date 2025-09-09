@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SetAroundPropertyUp" load_steps=2 format=3 uid="uid://bsjo0pghcbowv"]
+
+[ext_resource type="Script" uid="uid://cpdag1iyimqi7" path="res://resource/effect/script/set_around_property_up.gd" id="1_k72vo"]
+
+[resource]
+script = ExtResource("1_k72vo")
+target_property = "containment_level"
+size = 1
+radius = 0
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://cpdag1iyimqi7"

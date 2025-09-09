@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://3o7vlg355hmm"]
+
+[ext_resource type="PackedScene" uid="uid://cybonpw1jpqy4" path="res://tscn/nightmare/nightmare.tscn" id="1_3xbyp"]
+[ext_resource type="Script" uid="uid://dgcc4g3c22a2q" path="res://tscn/nightmare/silent_echo.gd" id="2_vkej5"]
+[ext_resource type="Texture2D" uid="uid://b1tk5ejgvt7ds" path="res://asset/tilemap/noise.png" id="3_1e0vo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_drx4v"]
+texture = ExtResource("3_1e0vo")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lgkwn"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_drx4v")
+
+[node name="SilentEcho" instance=ExtResource("1_3xbyp")]
+script = ExtResource("2_vkej5")
+random_number = 60
+nightmare_index = 1
+nightmare_name = "静谧回想"
+wake_degree_list = Array[int]([50, 80, 100])
+
+[node name="TileMapLayer" parent="." index="0"]
+tile_set = SubResource("TileSet_lgkwn")

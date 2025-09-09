@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Combine" load_steps=7 format=3 uid="uid://5uc15ip80qae"]
+
+[ext_resource type="Script" uid="uid://b7t8c8jkumqvh" path="res://resource/effect/script/effect_base.gd" id="1_7hrbd"]
+[ext_resource type="Script" uid="uid://clhem404nc8wq" path="res://resource/effect/script/create.gd" id="2_mn7sv"]
+[ext_resource type="Script" uid="uid://dc0t2n7a5013g" path="res://resource/effect/script/combine.gd" id="2_q5ydn"]
+[ext_resource type="Script" uid="uid://coq5c052tcaw6" path="res://resource/effect/script/generate_card.gd" id="3_mn7sv"]
+
+[sub_resource type="Resource" id="Resource_ixapv"]
+script = ExtResource("2_mn7sv")
+product_index = 3
+create_spwaner = false
+can_create_in_building = false
+can_create_in_water = true
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://clhem404nc8wq"
+
+[sub_resource type="Resource" id="Resource_4ynoq"]
+script = ExtResource("3_mn7sv")
+card_index = 7
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://coq5c052tcaw6"
+
+[resource]
+script = ExtResource("2_q5ydn")
+list = Array[ExtResource("1_7hrbd")]([SubResource("Resource_ixapv"), SubResource("Resource_4ynoq")])
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dc0t2n7a5013g"

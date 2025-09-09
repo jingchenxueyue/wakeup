@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EffectBase" load_steps=2 format=3 uid="uid://bqupixswcwdkx"]
+
+[ext_resource type="Script" uid="uid://b7t8c8jkumqvh" path="res://resource/effect/script/effect_base.gd" id="1_2mt2o"]
+
+[resource]
+script = ExtResource("1_2mt2o")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://b7t8c8jkumqvh"

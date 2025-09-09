@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Eradicate" load_steps=2 format=3 uid="uid://cuyp54jldp2x5"]
+
+[ext_resource type="Script" uid="uid://sanq3firwbsf" path="res://resource/effect/script/eradicate.gd" id="1_3mlei"]
+
+[resource]
+script = ExtResource("1_3mlei")
+radius = 3
+effect_text = "清除噩梦"
+metadata/_custom_type_script = "uid://sanq3firwbsf"

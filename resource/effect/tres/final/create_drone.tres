@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Create" load_steps=2 format=3 uid="uid://chmkitavs5rem"]
+
+[ext_resource type="Script" uid="uid://clhem404nc8wq" path="res://resource/effect/script/create.gd" id="1_l0dsh"]
+
+[resource]
+script = ExtResource("1_l0dsh")
+product_index = 1
+create_spwaner = false
+can_create_in_building = true
+can_create_in_water = true
+effect_text = "创造无人机"
+metadata/_custom_type_script = "uid://clhem404nc8wq"

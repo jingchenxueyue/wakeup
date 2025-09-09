@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FriendAction" load_steps=2 format=3 uid="uid://qpqe4pv72bi2"]
+
+[ext_resource type="Script" uid="uid://ci8pt0knxccy1" path="res://resource/effect/script/action/friend/friend_action.gd" id="1_gpcmc"]
+
+[resource]
+script = ExtResource("1_gpcmc")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://ci8pt0knxccy1"

@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://cask11bt4pjds"]
+
+[ext_resource type="Texture2D" uid="uid://5ml8xyudfasv" path="res://asset/image/drone32.png" id="1_28gmm"]
+
+[sub_resource type="Shader" id="Shader_28gmm"]
+code = "shader_type canvas_item;
+
+// 动画圆环的参数
+uniform float cycle_duration : hint_range(1.0, 10.0) = 2.0;
+uniform float ring_width : hint_range(0.01, 0.5) = 0.05;
+uniform float feather_amount : hint_range(0.001, 0.2) = 0.02;
+
+// 实心圆的参数
+uniform float core_radius : hint_range(0.0, 0.5) = 0.05;
+uniform float core_feather_amount : hint_range(0.001, 0.2) = 0.01;
+uniform vec4 _color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+void fragment() {
+    // 获取UV坐标，并将其中心移动到(0.5, 0.5)
+    vec2 uv = UV - vec2(0.5);
+
+    // 计算当前像素到中心点的距离
+    float distance_from_center = length(uv);
+
+    // --- 动画圆环部分 ---
+    
+    float time_in_cycle = mod(TIME, cycle_duration);
+    float progress = time_in_cycle / cycle_duration;
+    
+    // 我们将圆环的半径从0.0增长到1.0
+    float ring_radius = progress;
+    float inner_radius = ring_radius - ring_width;
+    float outer_radius = ring_radius;
+
+    float inner_edge = smoothstep(inner_radius, inner_radius + feather_amount, distance_from_center);
+    float outer_edge = smoothstep(outer_radius - feather_amount, outer_radius, distance_from_center);
+    float ring_mask = outer_edge - inner_edge;
+    
+    // 修改不透明度计算方式
+    // 当圆环半径接近1.0时，不透明度从1.0降低到0.0
+    // 我们用 pow() 函数来控制不透明度降低的速率，使其不完全是线性的
+    float ring_alpha = ring_mask * (0.5 - ring_radius);
+    vec4 final_ring_color = vec4(_color.rgb, _color.a * ring_alpha);
+
+    // --- 实心圆部分 ---
+
+    float core_mask = smoothstep(core_radius, core_radius - core_feather_amount, distance_from_center);
+    vec4 final_core_color = _color;
+    final_core_color.a *= core_mask;
+
+    // --- 混合两个效果 ---
+
+    COLOR = mix(final_ring_color, final_core_color, final_core_color.a);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3eyh3"]
+resource_local_to_scene = true
+shader = SubResource("Shader_28gmm")
+shader_parameter/cycle_duration = 2.5
+shader_parameter/ring_width = 0.011
+shader_parameter/feather_amount = 0.044
+shader_parameter/core_radius = 0.039
+shader_parameter/core_feather_amount = 0.009
+shader_parameter/_color = Color(1, 1, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_3eyh3")
+scale = Vector2(2, 2)
+texture = ExtResource("1_28gmm")

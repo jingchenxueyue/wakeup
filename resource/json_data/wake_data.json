@@ -1,0 +1,239 @@
+{
+  "card": {
+	"1": {
+	  "TITLE": "无人机阵列",
+	  "IMAGE_PATH": "c1",
+	  "COST": 1,
+	  "TYPE": "DETECT",
+	  "DESCRIPTION": "4回合内，去除指定位置周围3格范围内的迷雾。",
+	  "EFFECT_PATH": "create_drone",
+	  "TAG": null
+	},
+	"2": {
+	  "TITLE": "构筑防护墙",
+	  "IMAGE_PATH": "c2",
+	  "COST": 1,
+	  "TYPE": "CONTAINMENT",
+	  "DESCRIPTION": "以指定位置为中心，设置一堵3*1或1*3的防护墙。防护墙能够阻止噩梦的蔓延。",
+	  "EFFECT_PATH": "create_wall",
+	  "TAG": null
+	},
+	"3": {
+	  "TITLE": "后勤调度",
+	  "IMAGE_PATH": "c3",
+	  "COST": 1,
+	  "TYPE": "SUPPORT",
+	  "DESCRIPTION": "在下个回合开始时，额外抽取2张卡牌。",
+	  "EFFECT_PATH": "draw_card_next_turn",
+	  "TAG": null
+	},
+	"4": {
+	  "TITLE": "优化物流",
+	  "IMAGE_PATH": "c4",
+	  "COST": 2,
+	  "TYPE": "SUPPORT",
+	  "DESCRIPTION": "在下个回合开始时，额外回复2点费用。",
+	  "EFFECT_PATH": "cost_up",
+	  "TAG": null
+	},
+	"5": {
+	  "TITLE": "逻辑炸弹",
+	  "IMAGE_PATH": "c5",
+	  "COST": 2,
+	  "TYPE": "ERADICATION",
+	  "DESCRIPTION": "清除指定位置周围3格范围内的噩梦。",
+	  "EFFECT_PATH": "eradicate",
+	  "TAG": null
+	},
+	"6": {
+	  "TITLE": "解析探针",
+	  "IMAGE_PATH": "c6",
+	  "COST": 1,
+	  "TYPE": "ERADICATION",
+	  "DESCRIPTION": "在指定位置设置在回合结束时解析噩梦信息的探针，将卡牌“紧急修复”加入手牌。浸没。",
+	  "EFFECT_PATH": "create_probe",
+	  "TAG": "SINK"
+	},
+	"7": {
+	  "TITLE": "紧急修复",
+	  "IMAGE_PATH": "c7",
+	  "COST": 1,
+	  "TYPE": "ERADICATION",
+	  "DESCRIPTION": "使指定位置一定范围内的友方机械单位的耐久度恢复至上限。快速整备。无回。",
+	  "EFFECT_PATH": "repair_machine",
+	  "TAG": "NO_RETURN"
+	},
+	"8": {
+	  "TITLE": "侦察小队",
+	  "IMAGE_PATH": "c8",
+	  "COST": 2,
+	  "TYPE": "DETECT",
+	  "DESCRIPTION": "在指定位置部署侦察小队。陷阵。",
+	  "EFFECT_PATH": "create_squad_scout",
+	  "TAG": "FORWARD_CHARGE"
+	},
+	"9": {
+	  "TITLE": "物资投送",
+	  "IMAGE_PATH": "c9",
+	  "COST": 3,
+	  "TYPE": "SUPPORT",
+	  "DESCRIPTION": "在指定位置投送一次性的物资补给，己方单位接触后将其生命值，攻击次数，移动力恢复至上限。",
+	  "EFFECT_PATH": "create_material",
+	  "TAG": null
+	},
+	"10": {
+	  "TITLE": "狙击支援",
+	  "IMAGE_PATH": "c10",
+	  "COST": 2,
+	  "TYPE": "SUPPORT",
+	  "DESCRIPTION": "对指定位置的所有敌方单位造成4点伤害。",
+	  "EFFECT_PATH": "hit_enemy",
+	  "TAG": null
+	}
+  },
+  "product": {
+	"1": {
+	  "NAME": "无人机阵列",
+	  "PRODUCT_PATH": "product",
+	  "TEXTURE_PATH": "drone32",
+	  "FOREVER": false,
+	  "TYPE": "DETECT",
+	  "LIFE_MAX": 4,
+	  "TIP_TEXT": null,
+	  "EFFECT_PATH": "detect",
+	  "DEATH_EFFECT_PATH": null,
+	  "TAG": "MACHINE"
+	},
+	"2": {
+	  "NAME": "防护墙",
+	  "PRODUCT_PATH": "entity",
+	  "TEXTURE_PATH": "wall_row",
+	  "FOREVER": true,
+	  "TYPE": "CONTAINMENT",
+	  "LIFE_MAX": 7,
+	  "TIP_TEXT": "需要设置该防护墙的建造方向",
+	  "EFFECT_PATH": "contain,expend_wall_row,expend_wall_col",
+	  "DEATH_EFFECT_PATH": null,
+	  "TAG": "PROJECT"
+	},
+	"3": {
+	  "NAME": "解析探针",
+	  "PRODUCT_PATH": "product",
+	  "TEXTURE_PATH": "drone32",
+	  "FOREVER": true,
+	  "TYPE": "ERADICATION",
+	  "LIFE_MAX": 6,
+	  "TIP_TEXT": null,
+	  "EFFECT_PATH": "create_turn_end_prase",
+	  "DEATH_EFFECT_PATH": null,
+	  "TAG": "MACHINE"
+	},
+	"4": {
+	  "NAME": "物资补给",
+	  "PRODUCT_PATH": "product",
+	  "TEXTURE_PATH": "material",
+	  "FOREVER": false,
+	  "TYPE": "SUPPORT",
+	  "LIFE_MAX": 3,
+	  "TIP_TEXT": null,
+	  "EFFECT_PATH": "heal_unit_recharge",
+	  "DEATH_EFFECT_PATH": null,
+	  "TAG": "MATERIAL"
+	}
+  },
+  "squad": {
+	"1": {
+	  "NAME": "侦察小队",
+	  "PRODUCT_PATH": "unit",
+	  "TEXTURE_PATH": "squad_detect",
+	  "FOREVER": true,
+	  "TYPE": "DETECT",
+	  "LIFE_MAX": 3,
+	  "VIEW_RADIUS": 3.5,
+	  "MOVE_DISTANCE_MAX": 3,
+	  "MOVE_DISTANCE_STEP": 1,
+	  "ATK": 3,
+	  "ATK_RADIUS": 2,
+	  "ATK_COUNT_MAX": 2,
+	  "ATK_VFX_NAME": "fire",
+	  "DEF": 1,
+	  "TIP_TEXT": "需要指定该侦察小队的目的地",
+	  "EFFECT_PATH": "action/friend/squad_detect",
+	  "DEATH_EFFECT_PATH": "generate_card:8",
+	  "TAG": "HUMAN"
+	}
+  },
+  "enemy": {
+	"1": {
+	  "NAME": "邪教徒",
+	  "PRODUCT_PATH": "unit",
+	  "TEXTURE_PATH": "enemy_swordman",
+	  "FOREVER": true,
+	  "TYPE": "NONE",
+	  "LIFE_MAX": 2,
+	  "VIEW_RADIUS": 2,
+	  "MOVE_DISTANCE_MAX": 2,
+	  "MOVE_DISTANCE_STEP": 1,
+	  "ATK": 2,
+	  "ATK_RADIUS": 1,
+	  "ATK_COUNT_MAX": 1,
+	  "ATK_VFX_NAME": "hit",
+	  "DEF": 1,
+	  "TIP_TEXT": null,
+	  "EFFECT_PATH": "action/enemy/enemy_action_human",
+	  "DEATH_EFFECT_PATH": null,
+	  "TAG": "HUMAN"
+	},
+	"2": {
+	  "NAME": "怪物",
+	  "PRODUCT_PATH": "unit",
+	  "TEXTURE_PATH": "enemy_monster",
+	  "FOREVER": true,
+	  "TYPE": "NONE",
+	  "LIFE_MAX": 6,
+	  "VIEW_RADIUS": 3,
+	  "MOVE_DISTANCE_MAX": 2,
+	  "MOVE_DISTANCE_STEP": 1,
+	  "ATK": 3,
+	  "ATK_RADIUS": 1,
+	  "ATK_COUNT_MAX": 1,
+	  "ATK_VFX_NAME": "hit",
+	  "DEF": 0,
+	  "TIP_TEXT": null,
+	  "EFFECT_PATH": "action/enemy/enemy_action_human",
+	  "DEATH_EFFECT_PATH": null,
+	  "TAG": "MONSTER"
+	}
+  },
+  "event": {
+	"l1_start": {
+	  "TITLE": "准备行动",
+	  "DESCRIPTION": "前不久我们收到了安城发出的求救讯号，这真是一件怪事，因为它两年前就已经被风暴撞上，成了一座空城。\n不过无论如何，总得过来看看情况，调查一下信号的源头，毕竟职责所在。",
+	  "BUTTON_TEXT": "开始行动。",
+	  "EFFECT_LIST": "generate_card:1,generate_card:10",
+	  "BUTTON_EFFECT_LIST": "pass"
+	},
+	"l1_origin": {
+	  "TITLE": "调查信号源",
+	  "DESCRIPTION": "除了满地的邪教徒和七零八碎的怪物，以及远处那个正在蔓延的噩梦，侦察小队什么也没找到。话说回来，这座城里的邪教徒们不仅多得不正常，品种也很单一，他们要干什么？\n保险起见，得去查查他们的底细，安城里有可能作为大本营的地方只有两个，先去哪？",
+	  "BUTTON_TEXT": "调查西北方向的图书馆。,调查正东方向的通讯站。",
+	  "EFFECT_LIST": "pass",
+	  "BUTTON_EFFECT_LIST": "pass,pass"
+	},
+	"l1_library": {
+	  "TITLE": "调查图书馆",
+	  "DESCRIPTION": "不出意料，这帮邪教徒还是玩末日论那一套。他们似乎真的以为这场噩梦是他们前两天【请】来的。不过他们记录的观测数据还挺有价值。\n时间紧迫，侦察小队该撤退了。",
+	  "BUTTON_TEXT": "将数据转交研发部。（获得卡牌：逻辑炸弹）",
+	  "EFFECT_LIST": "generate_card:5",
+	  "BUTTON_EFFECT_LIST": "pass"
+	},
+	"l1_station": {
+	  "TITLE": "调查通讯站",
+	  "DESCRIPTION": "好消息，侦察小队启动通讯站，找到了那条求救讯号。\n坏消息，设备记录显示的发信时间在两年前。\n侦察小队认为是静谧回想不仅将讯号保留到了前两天，甚至顺便给它换了个地方才意外触发……对，没错，就是两百米外已经越来越近的那个吊诡玩意儿。\n时间紧迫，侦察小队该撤退了。",
+	  "BUTTON_TEXT": "通讯稳定了，让支援系统上线。（获得卡牌：物资投送，构筑防护墙）",
+	  "EFFECT_LIST": "generate_card:2,generate_card:9",
+	  "BUTTON_EFFECT_LIST": "pass"
+	}
+  },
+  "default": {}
+}

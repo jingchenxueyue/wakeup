@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Deviation" load_steps=2 format=3 uid="uid://c0ffijqma5weo"]
+
+[ext_resource type="Script" uid="uid://do5eckmlhgm0w" path="res://resource/effect/script/deviation.gd" id="1_mtkf8"]
+
+[resource]
+script = ExtResource("1_mtkf8")
+deviation = Vector2i(0, 0)
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://do5eckmlhgm0w"

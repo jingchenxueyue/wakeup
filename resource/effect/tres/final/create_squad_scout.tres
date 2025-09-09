@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CreateUnit" load_steps=2 format=3 uid="uid://bd5840yvxq3pr"]
+
+[ext_resource type="Script" uid="uid://b470w0xtamtd8" path="res://resource/effect/script/create_unit.gd" id="1_uj8qt"]
+
+[resource]
+script = ExtResource("1_uj8qt")
+is_enemy = false
+product_index = 1
+create_spwaner = false
+can_create_in_building = false
+can_create_in_water = false
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://b470w0xtamtd8"

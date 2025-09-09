@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddv8i6m8rfiry"]
+
+[ext_resource type="Script" uid="uid://c7gjexkvr6w3h" path="res://tscn/card/card_base.gd" id="1_5fd5s"]
+[ext_resource type="Texture2D" uid="uid://ccva768tntads" path="res://asset/card/outline/cardHeartsA.png" id="2_tikc8"]
+[ext_resource type="Theme" uid="uid://cxebgykxavgyt" path="res://asset/UI/resource/default.theme" id="4_csjkq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tikc8"]
+size = Vector2(136, 186)
+
+[node name="Card" type="Area2D"]
+script = ExtResource("1_5fd5s")
+
+[node name="Outline" type="Sprite2D" parent="."]
+texture = ExtResource("2_tikc8")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="text" type="Label" parent="."]
+offset_left = -67.0
+offset_top = -21.0
+offset_right = 67.0
+offset_bottom = 77.0
+theme = ExtResource("4_csjkq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tikc8")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = -66.0
+offset_top = -91.0
+offset_right = -46.0
+offset_bottom = -71.0
+
+[node name="LabelCost" type="Label" parent="Panel"]
+layout_mode = 2
+theme = ExtResource("4_csjkq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTitle" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -92.0
+offset_right = 32.0
+offset_bottom = -72.0
+theme = ExtResource("4_csjkq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "标题"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelType" type="Label" parent="."]
+offset_left = -34.0
+offset_top = 75.0
+offset_right = 34.0
+offset_bottom = 95.0
+theme = ExtResource("4_csjkq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "类型"
+horizontal_alignment = 1
+vertical_alignment = 1

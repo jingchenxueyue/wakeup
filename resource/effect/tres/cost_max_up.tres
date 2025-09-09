@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CostMaxUp" load_steps=2 format=3 uid="uid://2riv8iaj7aqe"]
+
+[ext_resource type="Script" uid="uid://dto0b6jmsc7u8" path="res://resource/effect/script/cost_max_up.gd" id="1_gk0w3"]
+
+[resource]
+script = ExtResource("1_gk0w3")
+up_value = 1
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dto0b6jmsc7u8"

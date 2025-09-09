@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Create" load_steps=2 format=3 uid="uid://c235xuejrdc7n"]
+
+[ext_resource type="Script" uid="uid://clhem404nc8wq" path="res://resource/effect/script/create.gd" id="1_l521n"]
+
+[resource]
+script = ExtResource("1_l521n")
+product_index = 0
+effect_text = "创造造物"
+metadata/_custom_type_script = "uid://clhem404nc8wq"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Detect" load_steps=2 format=3 uid="uid://b6o2hfhvw3jd5"]
+
+[ext_resource type="Script" uid="uid://dpos0m2ywbxuy" path="res://resource/effect/script/detect.gd" id="1_xckyx"]
+
+[resource]
+script = ExtResource("1_xckyx")
+target_property = "light_level"
+size = 1
+radius = 3
+effect_text = "消除一定范围内的迷雾"
+metadata/_custom_type_script = "uid://dpos0m2ywbxuy"

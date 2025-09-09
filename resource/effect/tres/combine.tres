@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Combine" load_steps=3 format=3 uid="uid://c4f1k6h5khq1m"]
+
+[ext_resource type="Script" uid="uid://b7t8c8jkumqvh" path="res://resource/effect/script/effect_base.gd" id="1_jndb8"]
+[ext_resource type="Script" uid="uid://dc0t2n7a5013g" path="res://resource/effect/script/combine.gd" id="2_3pp3t"]
+
+[resource]
+script = ExtResource("2_3pp3t")
+list = Array[ExtResource("1_jndb8")]([])
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dc0t2n7a5013g"

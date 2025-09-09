@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FriendArriveAt" load_steps=2 format=3 uid="uid://wcktnfdy84iu"]
+
+[ext_resource type="Script" uid="uid://wy2q78tsjs6v" path="res://resource/task/script/friend_arrive_at.gd" id="1_pxw03"]
+
+[resource]
+script = ExtResource("1_pxw03")
+target_map_position_list = Array[Vector2i]([Vector2i(7, 8), Vector2i(8, 8)])
+task_context = "己方单位到达目标位置。"
+metadata/_custom_type_script = "uid://wy2q78tsjs6v"

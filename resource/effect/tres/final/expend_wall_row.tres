@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="Combine" load_steps=11 format=3 uid="uid://3pd0u2wosby6"]
+
+[ext_resource type="Script" uid="uid://b7t8c8jkumqvh" path="res://resource/effect/script/effect_base.gd" id="1_tigxi"]
+[ext_resource type="Script" uid="uid://bn7enwhbq7j83" path="res://resource/effect/script/create_entity.gd" id="2_l1eee"]
+[ext_resource type="Script" uid="uid://do5eckmlhgm0w" path="res://resource/effect/script/deviation.gd" id="3_d4tr6"]
+[ext_resource type="Script" uid="uid://dob8ve8ymxwvq" path="res://resource/effect/script/repetition.gd" id="4_lwc1b"]
+[ext_resource type="Script" uid="uid://dc0t2n7a5013g" path="res://resource/effect/script/combine.gd" id="5_amd27"]
+
+[sub_resource type="Resource" id="Resource_dp8dj"]
+script = ExtResource("2_l1eee")
+product_index = 2
+create_spwaner = true
+can_create_in_building = false
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://bn7enwhbq7j83"
+
+[sub_resource type="Resource" id="Resource_c274e"]
+script = ExtResource("3_d4tr6")
+deviation = Vector2i(-1, 0)
+next_effect = SubResource("Resource_dp8dj")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://do5eckmlhgm0w"
+
+[sub_resource type="Resource" id="Resource_d6iru"]
+script = ExtResource("4_lwc1b")
+repeat_count = 1
+next_effect = SubResource("Resource_c274e")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dob8ve8ymxwvq"
+
+[sub_resource type="Resource" id="Resource_d53bs"]
+script = ExtResource("3_d4tr6")
+deviation = Vector2i(1, 0)
+next_effect = SubResource("Resource_dp8dj")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://do5eckmlhgm0w"
+
+[sub_resource type="Resource" id="Resource_fhook"]
+script = ExtResource("4_lwc1b")
+repeat_count = 1
+next_effect = SubResource("Resource_d53bs")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dob8ve8ymxwvq"
+
+[resource]
+script = ExtResource("5_amd27")
+list = Array[ExtResource("1_tigxi")]([SubResource("Resource_d6iru"), SubResource("Resource_fhook")])
+effect_text = "扩墙（横向）"
+metadata/_custom_type_script = "uid://dc0t2n7a5013g"

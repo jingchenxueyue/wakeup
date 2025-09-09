@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Repair" load_steps=2 format=3 uid="uid://cj0ce56hmq8g4"]
+
+[ext_resource type="Script" uid="uid://boi6dj5tn1jrs" path="res://resource/effect/script/repair.gd" id="1_tnbti"]
+
+[resource]
+script = ExtResource("1_tnbti")
+value = 99
+radius = 0.0
+with_recharge = false
+is_enemy = false
+target_tag = "MACHINE"
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://boi6dj5tn1jrs"

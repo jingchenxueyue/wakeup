@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Repetition" load_steps=2 format=3 uid="uid://dr1biwt4qv87"]
+
+[ext_resource type="Script" uid="uid://dob8ve8ymxwvq" path="res://resource/effect/script/repetition.gd" id="1_8yagf"]
+
+[resource]
+script = ExtResource("1_8yagf")
+repeat_count = 1
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dob8ve8ymxwvq"

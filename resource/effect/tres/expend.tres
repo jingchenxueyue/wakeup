@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Repetition" load_steps=6 format=3 uid="uid://thwuq7log708"]
+
+[ext_resource type="Script" uid="uid://bn7enwhbq7j83" path="res://resource/effect/script/create_entity.gd" id="1_d40dt"]
+[ext_resource type="Script" uid="uid://dob8ve8ymxwvq" path="res://resource/effect/script/repetition.gd" id="1_fsl3d"]
+[ext_resource type="Script" uid="uid://do5eckmlhgm0w" path="res://resource/effect/script/deviation.gd" id="2_wlqaa"]
+
+[sub_resource type="Resource" id="Resource_dp8dj"]
+script = ExtResource("1_d40dt")
+product_index = 2
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://bn7enwhbq7j83"
+
+[sub_resource type="Resource" id="Resource_g7kws"]
+script = ExtResource("2_wlqaa")
+deviation = Vector2i(-1, 0)
+next_effect = SubResource("Resource_dp8dj")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://do5eckmlhgm0w"
+
+[resource]
+script = ExtResource("1_fsl3d")
+repeat_count = 1
+next_effect = SubResource("Resource_g7kws")
+effect_text = "默认效果"
+metadata/_custom_type_script = "uid://dob8ve8ymxwvq"
